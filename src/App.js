@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Login from "./components/auth/Login";
+import Welcome from "./components/utils/Welcome";
+import SubjectsList from "./components/subjects/SubjectsList";
+import SubjectDetailed from "./components/subjects/SubjectDetailed";
+import ReportCreation from "./components/reports/ReportCreation";
+import TaskReports from "./components/reports/TaskReports";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faClock, faQuestionCircle, faPlusSquare, faEye } from '@fortawesome/free-regular-svg-icons'
 
-function App() {
+library.add(faClock, faQuestionCircle, faPlusSquare, faEye);
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Welcome}/>
+        <Route path="/auth" component={Login}/>
+        <Route path="/subjects/:subjectID/tasks/:taskID/reports" component={TaskReports}/>
+        <Route path="/subjects/:subjectID/tasks/:taskID" component={ReportCreation}/>
+        <Route path="/subjects/:subjectID" component={SubjectDetailed}/>
+        <Route path="/subjects" component={SubjectsList}/>
+        <Route path="/test">
+          TEST!
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
-export default App;

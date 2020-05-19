@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.task {
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.task-create {
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-deck {
+  padding: 20px;
+}
