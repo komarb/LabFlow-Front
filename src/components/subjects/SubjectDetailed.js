@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import API from "../../api/API";
+import API, {config} from "../../api/API";
 import Group from "../groups/Group";
 import Task from "../tasks/Task";
 import TaskCreate from "../tasks/TaskCreate";
@@ -13,10 +13,11 @@ export default function SubjectDetailed(props) {
     const [groups, setGroups] = useState([]);
     const [viewVariant, setViewVariant] = useState(true);
     const { subjectID } = useParams();
+    const user = JSON.parse(localStorage.getItem('user'));
 
     async function loadTasks() {
         setIsLoading(true);
-        await API.get(`/subjects/${subjectID}/tasks`)
+        await API.get(`/subjects/${subjectID}/tasks`, config)
             .then(response => {
                 return response.data.map(task => ({
                     id: task.id,
@@ -38,7 +39,7 @@ export default function SubjectDetailed(props) {
 
     async function loadGroups() {
         setIsLoading(true);
-        await API.get(`/subjects/${subjectID}/groups`)
+        await API.get(`/subjects/${subjectID}/groups`, config)
             .then(response => {
                 let groups = response.data.map(group => ({
                     id: group.id,
@@ -58,7 +59,7 @@ export default function SubjectDetailed(props) {
 
     async function loadSubject() {
         setIsLoading(true);
-        await API.get(`/subjects/${subjectID}`)
+        await API.get(`/subjects/${subjectID}`, config)
             .then(response => {
                 setSubject(response.data);
                 setIsLoading(false);

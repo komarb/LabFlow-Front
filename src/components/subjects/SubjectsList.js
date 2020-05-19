@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import API from "../../api/API";
+import API, {config} from "../../api/API";
 import Subject from "./Subject";
 
 export default function SubjectsList(props) {
@@ -9,7 +9,7 @@ export default function SubjectsList(props) {
     async function loadSubjects() {
         setIsLoading(true);
 
-        await API.get('/subjects')
+        await API.get('/subjects', config)
             .then(response => {
                 let subjects = response.data.map(subject => ({
                     id: subject.id,

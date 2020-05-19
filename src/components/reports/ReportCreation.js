@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useParams} from "react-router-dom";
-import API from "../../api/API";
+import API, {config} from "../../api/API";
 
 export default function ReportCreation(props) {
     const { subjectID, taskID } = useParams();
@@ -9,7 +9,7 @@ export default function ReportCreation(props) {
     async function createReport() {
         await API.post(`/subjects/${subjectID}/tasks/${taskID}`, {
             text: reportText
-        })
+        }, config)
             .then(response => console.log(response))
             .catch(err => console.log(err));
     }

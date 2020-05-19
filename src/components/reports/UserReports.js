@@ -2,15 +2,16 @@ import React, {useEffect, useState} from 'react';
 import API, {config} from "../../api/API";
 import {useParams} from "react-router-dom";
 import Report from "./Report";
+import authService from "../../services/authService";
 
-export default function TaskReports(props) {
+export default function UserReports(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [reports, setReports] = useState([]);
-    const { subjectID, taskID } = useParams();
+    const [currentUser, setCurrentUser] = useState({});
 
     async function loadReports() {
         setIsLoading(true);
-        await API.get(`/subjects/${subjectID}/tasks/${taskID}/reports`, config)
+        await API.get(`/reports/${currentUser.id}`, config)     //TODO: AuthContext
             .then(response => {
                 return response.data.map(report => ({
                     id: report.id,
@@ -29,6 +30,7 @@ export default function TaskReports(props) {
                 console.log(reports);
             })
             .catch(err => console.log(err));
+        setIsLoading(false);
     }
     useEffect(() => {
         loadReports()
@@ -37,8 +39,8 @@ export default function TaskReports(props) {
         <Report report={report} key={index}/>
     );
     return (
-            <div className="reports-deck card-deck mb-3 text-center">
-                {reportsArray}
-            </div>
+        <div className="reports-deck card-deck mb-3 text-center">
+            {reportsArray}
+        </div>
     )
 }

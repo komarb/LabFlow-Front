@@ -6,7 +6,7 @@ export default function Welcome(props) {
             <div className="col-xs-12 jumbotron text-center">
                 <h1>LabFlow</h1>
                 <p>Все работы под рукой</p>
-                <a href="/auth" className="btn btn-primary btn-lg btn-login btn-block">Войти</a>
+                <a href="/signin" className="btn btn-primary btn-lg btn-login btn-block">Войти</a>
             </div>
         </div>
     )
