@@ -38,7 +38,9 @@ export default function TaskReports(props) {
     );
     return (
             <div className="reports-deck card-deck mb-3 text-center">
-                {reportsArray}
+                {isLoading ? "Загрузка" : (
+                    reportsArray && reportsArray.length > 0 ? reportsArray : "Отчетов нет"
+                )}
             </div>
     )
 }

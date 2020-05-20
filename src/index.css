@@ -11,14 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.task {
+.task, .report {
+  word-wrap: break-word;
   min-width: 300px;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
 }
 .task-create {
-  min-height: 150px;
+  min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +28,12 @@ code {
 .task-deck {
   padding: 20px;
 }
-.report-done-icon {
-  margin-right: 10px;
+.icons {
+  margin-bottom: 20px;
+}
+.report-done-icon, .task-create-report-icon{
+  margin-right: 15px;
+}
+.task-create-close-icon {
+  margin-bottom: 20px;
 }

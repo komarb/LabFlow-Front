@@ -30,7 +30,7 @@ export default function Profile(props) {
                 {currentUser && (
                     <li className="nav-item">
                         <Link to={"/reports"} className="nav-link">
-                            Мои отчеты
+                            Отчеты
                         </Link>
                     </li>
                 )}
@@ -40,7 +40,7 @@ export default function Profile(props) {
                 <div className="navbar-nav ml-auto">
                     <li className="nav-item">
                         <Link to={"/profile"} className="nav-link">
-                            {currentUser.username}
+                            {currentUser.name}
                         </Link>
                     </li>
                     <li className="nav-item">

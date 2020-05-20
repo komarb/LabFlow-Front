@@ -1,12 +1,8 @@
-import React, {useEffect, useState} from "react";
-import authService from "../../services/authService";
+import React, {useContext, useEffect, useState} from "react";
+import {AuthContext} from "./AuthContext";
 
 export default function Profile(props) {
-    const [currentUser, setCurrentUser] = useState({});
-    useEffect(() => {
-        setCurrentUser(authService.getCurrentUser())
-    }, []);
-
+    const currentUser = useContext(AuthContext);
     return (
         <div className="container">
             <header className="jumbotron">

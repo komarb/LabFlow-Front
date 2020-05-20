@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import API, {config} from "../../api/API";
 import {useParams} from "react-router-dom";
-import Report from "./Report";
-import authService from "../../services/authService";
+import Report from "./Report"
+import {AuthContext} from "../auth/AuthContext";
 
 export default function UserReports(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [reports, setReports] = useState([]);
-    const [currentUser, setCurrentUser] = useState({});
+    const currentUser = useContext(AuthContext);
 
     async function loadReports() {
         setIsLoading(true);
-        await API.get(`/reports/${currentUser.id}`, config)     //TODO: AuthContext
+        await API.get(`/reports/${currentUser.id}`, config)
             .then(response => {
                 return response.data.map(report => ({
                     id: report.id,

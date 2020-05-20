@@ -3,7 +3,7 @@ import API from "../api/API";
 
 class AuthService {
     login(username, password) {
-        return Auth.post('/signin', {
+        return Auth.post('/signin', {           //TODO: Refresh token
             username,
             password
         }).then(response => {
