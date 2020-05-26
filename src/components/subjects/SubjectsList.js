@@ -34,7 +34,7 @@ export default function SubjectsList(props) {
         <Subject subject={subject} key={index}/>
     );
     return (
-        <div className="subjectsList card-deck mb-3 text-center">
+        <div className="subjects-list">
             {isLoading ? "Loading..." : subjectsArray}
         </div>
     )

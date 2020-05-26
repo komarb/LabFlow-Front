@@ -11,6 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.subject {
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  margin: 10px;
+  box-shadow: -4px 0 0 #017bff;
+}
+
 .task, .report {
   word-wrap: break-word;
   min-width: 300px;
@@ -31,9 +39,18 @@ code {
 .icons {
   margin-bottom: 20px;
 }
+.icon {
+  margin-right: 10px;
+}
 .report-done-icon, .task-create-report-icon{
   margin-right: 15px;
 }
 .task-create-close-icon {
   margin-bottom: 20px;
 }
+
+.report-body {
+  text-align: left;
+  margin-left: 20px;
+}
+
